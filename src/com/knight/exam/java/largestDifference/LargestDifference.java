@@ -13,7 +13,30 @@ public class LargestDifference {
         System.out.println(largestDifferenceOfEvens(new int[]{1, 2, 1, 2, 1, 4, 1, 6, 4}));
     }
 
-    static int largestDifferenceOfEvens(int[] a) {
+
+    static int largestDifferenceOfEvens(int[ ] a){
+            int smallestEven = Integer.MAX_VALUE;
+            int largestEven = Integer.MIN_VALUE;
+            int evenCount = 0;
+    
+            for (int j : a) {
+                if (j % 2 == 0) {
+                    evenCount++;
+                    if (j > largestEven) {
+                        largestEven = j;
+                    }
+                    if (j < smallestEven) {
+                        smallestEven = j;
+                    }
+                }
+            }
+            if (evenCount < 2){
+                return -1;
+            }
+            return largestEven - smallestEven;
+    }
+
+    static int largestDifferenceOfEvens2(int[] a) {
         boolean evenFlag = false;
         int largestDiff = 0;
         for (int i = 0; i < a.length; i++) {
